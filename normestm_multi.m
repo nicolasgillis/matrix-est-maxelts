@@ -134,7 +134,7 @@ if t >  1
     b(2:2:end) = -b(2:2:end);
     X(:, 2) = transpose(b)/(3*n/2);
 end
-for j = 3:t
+for j = 3:min(t,n) % !!! otherwise this may enter an infinite loop for n small 
     myrand = randi(n);
     while ismember(myrand, prev_inds)
         myrand = randi(n);
