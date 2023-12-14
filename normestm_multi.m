@@ -111,7 +111,6 @@ if nargin >= 3
            'Argument opts is invalid, please read the help for guidance.')
    end
 end
-t = alpha * p;
 
 if ismat
     [m, n] = size(A);
@@ -119,6 +118,8 @@ else
     dims = A('dim', [], varargin{:});
     m = dims(1); n = dims(2);
 end
+
+t = min(n, alpha * p); % t needs to be smaller than n, otherwise the loop below can become infinite 
 
 % Initialise the algorithm
 maxiter = 20;
